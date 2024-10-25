@@ -1,12 +1,21 @@
 Package: IndianLiteracyRates
-Title: What the Package Does (One Line, Title Case)
+Title: Analysing Literacy Rate Changes in Indian States and Union Territories (2001–2011 census)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("JapneetKaur", "Oberoi", , "jobe0005@student.monash.edu", role = c("aut", "cre"))
+Description: This package provides tools to analyze the literacy rates of Indian states and union territories from the 2001 and 2011 censuses. It includes functions to visualize and compare literacy rates for total, urban, and rural populations across the country.
+License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports: 
+    dplyr,
+    ggplot2,
+    shiny
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
