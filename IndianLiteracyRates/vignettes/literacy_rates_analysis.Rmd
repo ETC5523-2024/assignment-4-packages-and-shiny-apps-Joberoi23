@@ -1,0 +1,49 @@
+---
+title: "literacy_rates_analysis"
+author: "Japneet Kaur Oberoi"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{literacy_rates_analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(IndianLiteracyRates)
+```
+
+
+# Introduction
+
+This vignette provides an overview of the `IndianLiteracyRates` package, which includes a data set on literacy rates across states and union territories in India for the years 2001 and 2011. Users can analyze overall, rural, and urban literacy trends and growth using the provided data and functions.
+
+# Loading the Package and Data
+
+To begin, loading the package and access the data set `GOI_data`:
+
+
+```{r}
+# Access the data
+data("GOI_data")
+head(GOI_data)
+```
+```{r}
+# Summary of the data set
+summary(GOI_data)
+```
+```{r}
+# Applying the literacy_growth function to GOI_data
+result <- literacy_growth(GOI_data)
+
+# Viewing the result
+print(result)
+```
+
+

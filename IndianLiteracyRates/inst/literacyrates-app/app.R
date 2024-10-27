@@ -2,9 +2,13 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
+library(IndianLiteracyRates)
+library(shinythemes)
+
 
 # Defining the UI
 ui <- fluidPage(
+  theme = shinytheme("lumen"),
   titlePanel("Indian Literacy Rate Analysis"),
 
   sidebarLayout(
@@ -27,7 +31,7 @@ ui <- fluidPage(
   )
 )
 
-# Define the server logic
+# Defining the server logic
 server <- function(input, output, session) {
   filtered_data <- reactive({
     req(input$state)
@@ -39,7 +43,7 @@ server <- function(input, output, session) {
   output$literacy_plot <- renderPlot({
     req(filtered_data())
 
-    # Prepare data for plotting
+    # Preparing data for plotting
     plot_data <- filtered_data() %>%
       select(literacy_rate_persons_total_2001, literacy_rate_persons_total_2011) %>%
       pivot_longer(
@@ -62,13 +66,13 @@ server <- function(input, output, session) {
   output$summary <- renderUI({
     req(filtered_data())
 
-    # Calculate the change in literacy rate between 2001 and 2011
+    # Calculating the change in literacy rate between 2001 and 2011
     rate_2001 <- filtered_data()$literacy_rate_persons_total_2001
     rate_2011 <- filtered_data()$literacy_rate_persons_total_2011
     literacy_change <- ifelse(!is.na(rate_2001) & !is.na(rate_2011),
                               rate_2011 - rate_2001, NA)
 
-    # Display the result
+    # Displaying the result
     if (is.na(literacy_change)) {
       HTML(paste0(
         "<strong>Summary:</strong><br/>",
@@ -88,7 +92,7 @@ server <- function(input, output, session) {
   output$urban_plot <- renderPlot({
     req(filtered_data())
 
-    # Prepare data for plotting urban literacy rate
+    # Preparing data for plotting urban literacy rate
     plot_data <- filtered_data() %>%
       select(literacy_rate_persons_urban_2001, literacy_rate_persons_urban_2011) %>%
       pivot_longer(
@@ -111,7 +115,7 @@ server <- function(input, output, session) {
   output$urban_summary <- renderUI({
     req(filtered_data())
 
-    # Calculate the change in urban literacy rate between 2001 and 2011
+    # Calculating the change in urban literacy rate between 2001 and 2011
     rate_urban_2001 <- filtered_data()$literacy_rate_persons_urban_2001
     rate_urban_2011 <- filtered_data()$literacy_rate_persons_urban_2011
     literacy_change_urban <- ifelse(!is.na(rate_urban_2001) & !is.na(rate_urban_2011),
@@ -137,7 +141,7 @@ server <- function(input, output, session) {
   output$rural_plot <- renderPlot({
     req(filtered_data())
 
-    # Prepare data for plotting rural literacy rate
+    # Preparing data for plotting rural literacy rate
     plot_data <- filtered_data() %>%
       select(literacy_rate_persons_rural_2001, literacy_rate_persons_rural_2011) %>%
       pivot_longer(
@@ -160,13 +164,13 @@ server <- function(input, output, session) {
   output$rural_summary <- renderUI({
     req(filtered_data())
 
-    # Calculate the change in rural literacy rate between 2001 and 2011
+    # Calculating the change in rural literacy rate between 2001 and 2011
     rate_rural_2001 <- filtered_data()$literacy_rate_persons_rural_2001
     rate_rural_2011 <- filtered_data()$literacy_rate_persons_rural_2011
     literacy_change_rural <- ifelse(!is.na(rate_rural_2001) & !is.na(rate_rural_2011),
                                     rate_rural_2011 - rate_rural_2001, NA)
 
-    # Display the result
+    # Displaying the result
     if (is.na(literacy_change_rural)) {
       HTML(paste0(
         "<strong>Rural Summary:</strong><br/>",
@@ -183,7 +187,7 @@ server <- function(input, output, session) {
   })
 }
 
-# Run the application
+# Running the application
 shinyApp(ui = ui, server = server)
 
 
