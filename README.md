@@ -18,8 +18,9 @@ Install the package from GitHub:
 install.packages("devtools")
 ```
 
-
 ```r
 # Install the IndianLiteracyRates package
 devtools::install_github("Joberoi23/IndianLiteracyRates")
 ```
+
+
