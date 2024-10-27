@@ -24,3 +24,8 @@ devtools::install_github("Joberoi23/IndianLiteracyRates")
 ```
 
 
+## Pkgdown Website
+
+You can have a look at the [Indian Literacy Rates](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-Joberoi23/)
+
+
