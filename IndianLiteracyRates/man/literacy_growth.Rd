@@ -7,15 +7,11 @@
 literacy_growth(data)
 }
 \arguments{
-\item{data}{A data frame containing literacy rates from the GOI dataset.}
+\item{data}{A data frame with literacy rates for 2001 and 2011.}
 }
 \value{
-A data frame with the original data and an additional column, \code{literacy_growth}, showing the growth rate.
+The input data frame with an additional \code{literacy_growth} column.
 }
 \description{
-This function calculates the percentage growth in literacy rates
-from 2001 to 2011 for each state or union territory in the dataset.
-}
-\examples{
-literacy_growth(data = GOI_data)
+Calculates the growth in literacy rates from 2001 to 2011.
 }
